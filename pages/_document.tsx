@@ -6,23 +6,21 @@ export default function Document() {
       <Head>
         {/* Meta Tags */}
         <meta charSet="utf-8" />
-        <meta name="description" content="TPB Marketing Powerhouse - AI-Powered Marketing Automation Platform for Cannabis Retail and Beyond" />
-        <meta name="keywords" content="cannabis retail technology, marketing automation, AI content generation, dispensary technology, retail kiosks" />
+        <meta name="description" content="The Peak Beyond ROI Calculator - Calculate return on investment for interactive kiosk solutions in cannabis retail" />
+        <meta name="keywords" content="ROI calculator, cannabis retail, interactive kiosks, investment calculator, dispensary technology, retail ROI" />
         <meta name="author" content="The Peak Beyond" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="TPB Marketing Powerhouse - AI Marketing Automation" />
-        <meta property="og:description" content="Transform your marketing operations with intelligent campaign generation, multi-channel publishing, and performance optimization." />
+        <meta property="og:title" content="TPB ROI Calculator - Interactive Kiosk Investment Calculator" />
+        <meta property="og:description" content="Calculate the return on investment for interactive kiosk solutions. See ROI projections, payback periods, and multi-location franchise calculations." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://tpb-marketing-powerhouse.vercel.app" />
-        <meta property="og:image" content="https://tpb-marketing-powerhouse.vercel.app/og-image.jpg" />
-        <meta property="og:site_name" content="TPB Marketing Powerhouse" />
+        <meta property="og:url" content="https://tpb-roi.vercel.app" />
+        <meta property="og:site_name" content="The Peak Beyond ROI Calculator" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="TPB Marketing Powerhouse - AI Marketing Automation" />
-        <meta name="twitter:description" content="Transform your marketing operations with intelligent campaign generation and multi-channel publishing." />
-        <meta name="twitter:image" content="https://tpb-marketing-powerhouse.vercel.app/og-image.jpg" />
+        <meta name="twitter:title" content="TPB ROI Calculator - Interactive Kiosk Investment Calculator" />
+        <meta name="twitter:description" content="Calculate ROI for interactive kiosk solutions with detailed projections and franchise multi-location support." />
         
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
@@ -41,10 +39,10 @@ export default function Document() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
-              "name": "TPB Marketing Powerhouse",
-              "description": "AI-Powered Marketing Automation Platform for Cannabis Retail and Beyond",
-              "url": "https://tpb-marketing-powerhouse.vercel.app",
+              "@type": "WebApplication",
+              "name": "TPB ROI Calculator",
+              "description": "Interactive ROI calculator for cannabis retail kiosk investments with franchise multi-location support",
+              "url": "https://tpb-roi.vercel.app",
               "applicationCategory": "BusinessApplication",
               "operatingSystem": "Web",
               "offers": {
