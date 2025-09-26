@@ -1,0 +1,7 @@
+[
+  { "key": "Small", "capex": 6752, "monthly": 300, "includes": "2× 8-jar Flower stations, 2× Pick-n-Place stations, 1× QCO screen" },
+  { "key": "Medium", "capex": 12830, "monthly": 550, "includes": "4× 8-jar Flower stations, 4× Pick-n-Place stations, 1× QCO screen" },
+  { "key": "Large", "capex": 17080, "monthly": 600, "includes": "4× 16-jar Flower stations, 4× Pick-n-Place stations, 2× QCO screens" },
+  { "key": "High Flower", "capex": 12300, "monthly": 600, "includes": "4× 16-jar Flower stations, 2× QCO screens, Optional millwork +$3,960" },
+  { "key": "Franchise Model 20+ stores", "capex": 8854, "monthly": 250, "includes": "4× 8-jar Flower stations, Multi-location pricing" }
+]

@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { 
+  font-family: 'Muli', sans-serif; 
+  @apply text-[15px] leading-relaxed; 
+}
+
+.card { @apply rounded-2xl shadow-md bg-white; }
+.btn  { @apply px-4 py-2 rounded-xl font-medium shadow hover:shadow-lg transition; }
+.btn-primary { @apply bg-tpb-green text-white hover:bg-tpb-slate; }
+.btn-secondary { @apply bg-tpb-orange text-white hover:bg-tpb-dark; }
+.input { @apply w-full rounded-xl border border-gray-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-tpb-blue/20; }
+.label { @apply text-sm font-medium text-tpb-slate; }
+.kicker { @apply uppercase tracking-wide text-xs text-tpb-slate; }
+.table { @apply min-w-full text-sm; }
+.table th { @apply text-left text-tpb-slate font-medium border-b; }
+.table td { @apply py-2 align-top border-b; }
+.pill { @apply px-2 py-0.5 rounded-full text-xs bg-tpb-dark text-white; }
