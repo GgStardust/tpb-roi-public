@@ -6,6 +6,7 @@ import ROIVisualization from '../components/ROIVisualization';
 import MultiLocationROI from '../components/MultiLocationROI';
 import TPBHeader from '../components/TPBHeader';
 import { generateROISnapshot } from '../utils/roiCalculations';
+import html2canvas from 'html2canvas';
 
 export default function ResultsPage() {
   const router = useRouter();
@@ -17,18 +18,22 @@ export default function ResultsPage() {
   const handlePNGExport = () => {
     const element = document.getElementById('roi-results');
     if (element) {
-      import('html2canvas').then(html2canvas => {
-        html2canvas.default(element, {
-          backgroundColor: '#ffffff',
-          scale: 2,
-          useCORS: true
-        }).then(canvas => {
-          const link = document.createElement('a');
-          link.download = `TPB-ROI-${result.pkg}-${new Date().toISOString().split('T')[0]}.png`;
-          link.href = canvas.toDataURL();
-          link.click();
-        });
+      html2canvas(element, {
+        backgroundColor: '#ffffff',
+        scale: 2,
+        useCORS: true
+      }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `TPB-ROI-${result.pkg}-${new Date().toISOString().split('T')[0]}.png`;
+        link.href = canvas.toDataURL();
+        link.click();
+      }).catch(error => {
+        console.error('Error generating PNG:', error);
+        alert('Error generating PNG. Please try again.');
       });
+    } else {
+      console.error('Element with id "roi-results" not found');
+      alert('Error: Could not find results element to export.');
     }
   };
 
