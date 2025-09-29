@@ -132,6 +132,36 @@ export default function ResultsPage() {
           </div>
         </div>
 
+        {/* ROI Results - Always Visible for PNG Export */}
+        <div id="roi-results" className="mb-12">
+          <div className="bg-white rounded-lg shadow-sm p-6">
+            {/* Header for PNG Export */}
+            <div className="text-center mb-6 border-b pb-4">
+              <h2 className="text-2xl font-bold text-tpb-dark">The Peak Beyond</h2>
+              <p className="text-lg text-gray-600">ROI for Interactive Kiosk Solutions</p>
+            </div>
+
+            <ROIResults
+              result={result}
+              revenue={inputs.revenue}
+              upliftPct={inputs.upliftPct}
+              marginPct={inputs.marginPct}
+              inputs={inputs}
+              showExport={false}
+              canExportPNG={false}
+              canExportSnapshot={false}
+              className="mb-8"
+            />
+
+            {/* Footer for PNG Export */}
+            <div className="text-center mt-6 border-t pt-4 text-sm text-gray-600">
+              <div>www.thepeakbeyond.com</div>
+              <div>415 579 1609</div>
+              <div>info@thepeakbeyond.com</div>
+            </div>
+          </div>
+        </div>
+
         {/* Detailed Results - Collapsible */}
         <div className="mb-12">
           <div className="bg-white rounded-lg shadow-sm">
@@ -149,22 +179,6 @@ export default function ResultsPage() {
             
             {showDetails && (
               <div className="px-6 pb-6 border-t">
-                <div id="roi-results">
-                  <ROIResults
-                    result={result}
-                    revenue={inputs.revenue}
-                    upliftPct={inputs.upliftPct}
-                    marginPct={inputs.marginPct}
-                    inputs={inputs}
-                    showExport={true}
-                    canExportPNG={true}
-                    canExportSnapshot={true}
-                    onSnapshotExport={handleSnapshotExport}
-                    onPNGExport={handlePNGExport}
-                    className="mb-8"
-                  />
-                </div>
-                
                 <div className="mt-8">
                   <h3 className="text-lg font-semibold text-tpb-dark mb-4">
                     Annual Profit Projection
