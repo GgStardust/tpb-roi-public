@@ -235,9 +235,6 @@ export default function CalculatorPage() {
                   <li>• In-store behavior data: session engagement, assisted discovery, and add-on rate observed across deployments.</li>
                   <li>• Adjustment for execution quality, store layout, content cadence, and staff enablement.</li>
                 </ul>
-                <p className="text-xs text-gray-500 mt-4">
-                  (Include footnote links to your chosen sources and a short line on your internal dataset. No numbers that reveal client identities.)
-                </p>
               </div>
             </div>
           </div>
