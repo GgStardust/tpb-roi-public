@@ -59,7 +59,7 @@ export default function CalculatorPage() {
             {/* Package Selection Cards */}
             <div className="mb-6">
               <h3 className="font-semibold text-tpb-dark mb-4">Choose Your Package:</h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="space-y-3">
                 {packages.map((pkg) => (
                   <div
                     key={pkg.key}
@@ -70,14 +70,23 @@ export default function CalculatorPage() {
                         : 'border-gray-200 bg-white hover:border-tpb-green/50'
                     }`}
                   >
-                    <h4 className="font-bold text-tpb-dark text-lg mb-2">{pkg.key}</h4>
-                    <div className="text-sm font-semibold text-gray-700 mb-3">
-                      ${pkg.capex.toLocaleString()} + ${pkg.monthly}/mo
-                    </div>
-                    <div className="text-sm text-gray-600 space-y-1">
-                      {pkg.includes.split(', ').map((item, index) => (
-                        <div key={index}>{item.trim()}</div>
-                      ))}
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <h4 className="font-bold text-tpb-dark text-lg mb-2">{pkg.key}</h4>
+                        <div className="text-sm text-gray-600 space-y-1">
+                          {pkg.includes.split(', ').map((item, index) => (
+                            <div key={index}>{item.trim()}</div>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="text-right ml-4">
+                        <div className="text-sm font-semibold text-gray-700">
+                          ${pkg.capex.toLocaleString()}
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          + ${pkg.monthly}/mo
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))}
