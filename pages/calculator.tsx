@@ -44,82 +44,20 @@ export default function CalculatorPage() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Preview Section */}
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-2xl font-bold text-tpb-dark mb-2">
-                Quick Preview
-              </h2>
-              <p className="text-gray-600">
-                See a snapshot of your potential ROI before running the full calculation.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-sm p-6">
-              <div className="space-y-4">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Selected Package:</span>
-                  <span className="font-semibold">{inputs.pkgKey}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Monthly Revenue:</span>
-                  <span className="font-semibold">${inputs.revenue.toLocaleString()}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Projected Uplift:</span>
-                  <span className="font-semibold text-tpb-green">{inputs.upliftPct}%</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Gross Margin:</span>
-                  <span className="font-semibold">{inputs.marginPct}%</span>
-                </div>
-              </div>
-
-              <div className="mt-6 pt-4 border-t">
-                <button
-                  onClick={() => router.push(`/results?${new URLSearchParams({
-                    pkg: inputs.pkgKey,
-                    revenue: inputs.revenue.toString(),
-                    uplift: inputs.upliftPct.toString(),
-                    margin: inputs.marginPct.toString(),
-                    extraCapex: inputs.extraCapex.toString()
-                  })}`)}
-                  className="w-full btn btn-primary text-lg py-3"
-                >
-                  Calculate My ROI
-                </button>
-              </div>
-            </div>
-
-            <div className="bg-gray-100 rounded-lg p-4">
-              <h3 className="font-semibold text-tpb-dark mb-2">What Happens Next?</h3>
-              <ul className="text-sm text-gray-600 space-y-1 mb-4">
-                <li>• Detailed ROI calculations and projections</li>
-                <li>• Payback period analysis</li>
-                <li>• Multi-year profit projections</li>
-                <li>• Downloadable reports for stakeholders</li>
-              </ul>
-              <button
-                onClick={handleViewAllFeatures}
-                className="text-sm text-tpb-green hover:text-tpb-dark underline"
-              >
-                Compare All Packages →
-              </button>
-            </div>
+        {/* Top Section - Store Details and Inputs */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-8">
+          {/* Store Details - Upper Left */}
+          <div>
+            <h1 className="text-3xl font-bold text-tpb-dark mb-2">
+              Your Store Details
+            </h1>
+            <p className="text-gray-600">
+              Enter your current store metrics to calculate the potential impact of interactive kiosks.
+            </p>
           </div>
 
-          {/* Input Section */}
+          {/* Input Section - Upper Right */}
           <div className="space-y-6">
-            <div>
-              <h1 className="text-3xl font-bold text-tpb-dark mb-2">
-                Your Store Details
-              </h1>
-              <p className="text-gray-600">
-                Enter your current store metrics to calculate the potential impact of interactive kiosks.
-              </p>
-            </div>
-
             {/* Package Selection Cards */}
             <div className="mb-6">
               <h3 className="font-semibold text-tpb-dark mb-4">Choose Your Package:</h3>
@@ -172,6 +110,70 @@ export default function CalculatorPage() {
                 conservative (5-8%) or optimistic (15-20%) scenarios based on your store's unique factors.
               </p>
             </div>
+          </div>
+        </div>
+
+        {/* Bottom Section - Quick Preview */}
+        <div className="space-y-6">
+          <div>
+            <h2 className="text-2xl font-bold text-tpb-dark mb-2">
+              Quick Preview
+            </h2>
+            <p className="text-gray-600">
+              See a snapshot of your potential ROI before running the full calculation.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="space-y-4">
+              <div className="flex justify-between">
+                <span className="text-gray-600">Selected Package:</span>
+                <span className="font-semibold">{inputs.pkgKey}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">Monthly Revenue:</span>
+                <span className="font-semibold">${inputs.revenue.toLocaleString()}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">Projected Uplift:</span>
+                <span className="font-semibold text-tpb-green">{inputs.upliftPct}%</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">Gross Margin:</span>
+                <span className="font-semibold">{inputs.marginPct}%</span>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t">
+              <button
+                onClick={() => router.push(`/results?${new URLSearchParams({
+                  pkg: inputs.pkgKey,
+                  revenue: inputs.revenue.toString(),
+                  uplift: inputs.upliftPct.toString(),
+                  margin: inputs.marginPct.toString(),
+                  extraCapex: inputs.extraCapex.toString()
+                })}`)}
+                className="w-full btn btn-primary text-lg py-3"
+              >
+                Calculate My ROI
+              </button>
+            </div>
+          </div>
+
+          <div className="bg-gray-100 rounded-lg p-4">
+            <h3 className="font-semibold text-tpb-dark mb-2">What Happens Next?</h3>
+            <ul className="text-sm text-gray-600 space-y-1 mb-4">
+              <li>• Detailed ROI calculations and projections</li>
+              <li>• Payback period analysis</li>
+              <li>• Multi-year profit projections</li>
+              <li>• Downloadable reports for stakeholders</li>
+            </ul>
+            <button
+              onClick={handleViewAllFeatures}
+              className="text-sm text-tpb-green hover:text-tpb-dark underline"
+            >
+              Compare All Packages →
+            </button>
           </div>
         </div>
 
