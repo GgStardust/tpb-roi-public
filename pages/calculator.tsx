@@ -46,18 +46,17 @@ export default function CalculatorPage() {
 
         {/* Top Section - Store Details and Inputs */}
         <div className="grid lg:grid-cols-2 gap-8 mb-8">
-          {/* Store Details - Upper Left */}
-          <div>
-            <h1 className="text-3xl font-bold text-tpb-dark mb-2">
-              Your Store Details
-            </h1>
-            <p className="text-gray-600">
-              Enter your current store metrics to calculate the potential impact of interactive kiosks.
-            </p>
-          </div>
-
-          {/* Input Section - Upper Right */}
+          {/* Store Details + Package Selection - Upper Left */}
           <div className="space-y-6">
+            <div>
+              <h1 className="text-3xl font-bold text-tpb-dark mb-2">
+                Your Store Details
+              </h1>
+              <p className="text-gray-600">
+                Enter your current store metrics to calculate the potential impact of interactive kiosks.
+              </p>
+            </div>
+
             {/* Package Selection Cards */}
             <div className="mb-6">
               <h3 className="font-semibold text-tpb-dark mb-4">Choose Your Package:</h3>
@@ -94,7 +93,10 @@ export default function CalculatorPage() {
                 ))}
               </div>
             </div>
+          </div>
 
+          {/* Input Section - Upper Right */}
+          <div className="space-y-6">
             <ROICalculator
               inputs={inputs}
               packages={packages}
