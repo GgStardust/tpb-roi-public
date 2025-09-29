@@ -5,8 +5,8 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    // Redirect to ROI tool
-    router.push('/roi-tool');
+    // Redirect to intro page
+    router.push('/intro');
   }, [router]);
 
   return (
