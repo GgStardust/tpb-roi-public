@@ -18,9 +18,6 @@ export default function CalculatorPage() {
     router.push('/intro');
   };
 
-  const handleViewAllFeatures = () => {
-    router.push('/roi-tool');
-  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -203,12 +200,6 @@ export default function CalculatorPage() {
               <li>• Multi-year profit projections</li>
               <li>• Downloadable reports for stakeholders</li>
             </ul>
-            <button
-              onClick={handleViewAllFeatures}
-              className="text-sm text-tpb-green hover:text-tpb-dark underline"
-            >
-              Compare All Packages →
-            </button>
           </div>
         </div>
 
