@@ -45,7 +45,7 @@ export default function IntroPage() {
           </div>
           
           <div className="text-center p-6 bg-white rounded-lg shadow-sm">
-            <div className="w-20 h-20 bg-tpb-blue rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-20 h-20 bg-tpb-slate rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl font-bold text-white">300%+</span>
             </div>
             <h3 className="text-lg font-semibold text-tpb-dark mb-2">Year-1 ROI</h3>

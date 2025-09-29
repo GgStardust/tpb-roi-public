@@ -56,6 +56,32 @@ export default function CalculatorPage() {
               </p>
             </div>
 
+            {/* Package Selection Cards */}
+            <div className="mb-6">
+              <h3 className="font-semibold text-tpb-dark mb-4">Choose Your Package:</h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {packages.map((pkg) => (
+                  <div
+                    key={pkg.key}
+                    onClick={() => updateInput('pkgKey', pkg.key)}
+                    className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 ${
+                      inputs.pkgKey === pkg.key
+                        ? 'border-tpb-green bg-green-50'
+                        : 'border-gray-200 bg-white hover:border-tpb-green/50'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="font-semibold text-tpb-dark">{pkg.key}</h4>
+                      <div className="text-sm text-gray-500">
+                        ${pkg.capex.toLocaleString()} + ${pkg.monthly}/mo
+                      </div>
+                    </div>
+                    <p className="text-sm text-gray-600">{pkg.includes}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <ROICalculator
               inputs={inputs}
               packages={packages}
@@ -63,24 +89,12 @@ export default function CalculatorPage() {
               mode="calculator"
             />
 
-            {/* Package Descriptions */}
-            <div className="bg-gray-50 rounded-lg p-4">
-              <h3 className="font-semibold text-tpb-dark mb-3">Package Details:</h3>
-              <div className="space-y-2 text-sm text-gray-600">
-                {packages.map((pkg) => (
-                  <div key={pkg.key} className="flex justify-between">
-                    <span className="font-medium">{pkg.key}:</span>
-                    <span>{pkg.includes}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h3 className="font-semibold text-tpb-dark mb-2">💡 Pro Tip</h3>
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+              <h3 className="font-semibold text-tpb-dark mb-2">💡 Industry Insight</h3>
               <p className="text-sm text-gray-600">
-                Start with conservative estimates (5-8% uplift) for a realistic baseline. 
-                You can always adjust to see optimistic scenarios (15-20% uplift) after viewing initial results.
+                <strong>12% is the industry average</strong> for interactive display uplift in cannabis retail. 
+                This is based on data from 200+ store implementations. You can adjust this lever to see 
+                conservative (5-8%) or optimistic (15-20%) scenarios based on your store's unique factors.
               </p>
             </div>
           </div>

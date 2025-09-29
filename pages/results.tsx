@@ -92,8 +92,8 @@ export default function ResultsPage() {
           </div>
 
           {/* Monthly Net Increase */}
-          <div className="bg-white rounded-lg shadow-sm p-6 text-center border-l-4 border-tpb-blue">
-            <div className="text-3xl font-bold text-tpb-blue mb-2">
+          <div className="bg-white rounded-lg shadow-sm p-6 text-center border-l-4 border-tpb-orange">
+            <div className="text-3xl font-bold text-tpb-orange mb-2">
               ${result.monthlyNet.toLocaleString()}
             </div>
             <div className="text-sm text-gray-600 mb-1">Monthly Net Increase</div>
@@ -101,8 +101,8 @@ export default function ResultsPage() {
           </div>
 
           {/* Year-1 ROI */}
-          <div className="bg-white rounded-lg shadow-sm p-6 text-center border-l-4 border-tpb-orange">
-            <div className="text-3xl font-bold text-tpb-orange mb-2">
+          <div className="bg-white rounded-lg shadow-sm p-6 text-center border-l-4 border-tpb-slate">
+            <div className="text-3xl font-bold text-tpb-slate mb-2">
               {result.year1Roi ? `${(result.year1Roi * 100).toFixed(0)}%` : "N/A"}
             </div>
             <div className="text-sm text-gray-600 mb-1">Year-1 ROI</div>
@@ -110,8 +110,8 @@ export default function ResultsPage() {
           </div>
 
           {/* 3-Year Total */}
-          <div className="bg-white rounded-lg shadow-sm p-6 text-center border-l-4 border-tpb-slate">
-            <div className="text-3xl font-bold text-tpb-slate mb-2">
+          <div className="bg-white rounded-lg shadow-sm p-6 text-center border-l-4 border-tpb-green">
+            <div className="text-3xl font-bold text-tpb-green mb-2">
               ${result.cumulative3Year.toLocaleString()}
             </div>
             <div className="text-sm text-gray-600 mb-1">3-Year Total</div>
