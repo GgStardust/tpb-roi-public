@@ -6,7 +6,7 @@ import TPBHeader from '../components/TPBHeader';
 
 export default function CalculatorPage() {
   const router = useRouter();
-  const { inputs, packages, updateInput } = useROICalculations();
+  const { inputs, result, packages, updateInput } = useROICalculations();
   const [showResults, setShowResults] = useState(false);
   const [showLearnMore, setShowLearnMore] = useState(false);
 
