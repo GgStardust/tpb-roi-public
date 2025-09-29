@@ -70,13 +70,15 @@ export default function CalculatorPage() {
                         : 'border-gray-200 bg-white hover:border-tpb-green/50'
                     }`}
                   >
-                    <div className="flex items-center justify-between mb-2">
-                      <h4 className="font-semibold text-tpb-dark">{pkg.key}</h4>
-                      <div className="text-sm text-gray-500">
-                        ${pkg.capex.toLocaleString()} + ${pkg.monthly}/mo
-                      </div>
+                    <h4 className="font-bold text-tpb-dark text-lg mb-2">{pkg.key}</h4>
+                    <div className="text-sm font-semibold text-gray-700 mb-3">
+                      ${pkg.capex.toLocaleString()} + ${pkg.monthly}/mo
                     </div>
-                    <p className="text-sm text-gray-600">{pkg.includes}</p>
+                    <div className="text-sm text-gray-600 space-y-1">
+                      {pkg.includes.split(', ').map((item, index) => (
+                        <div key={index}>{item.trim()}</div>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
