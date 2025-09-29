@@ -29,7 +29,7 @@ export default function IntroPage() {
         {/* Key Benefits */}
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           <div className="text-center p-6 bg-white rounded-lg shadow-sm">
-            <div className="w-16 h-16 bg-tpb-green rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-20 h-20 bg-tpb-green rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl font-bold text-white">3-5%</span>
             </div>
             <h3 className="text-lg font-semibold text-tpb-dark mb-2">Basket Size Lift</h3>
@@ -37,7 +37,7 @@ export default function IntroPage() {
           </div>
           
           <div className="text-center p-6 bg-white rounded-lg shadow-sm">
-            <div className="w-16 h-16 bg-tpb-orange rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-20 h-20 bg-tpb-orange rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl font-bold text-white">1-3</span>
             </div>
             <h3 className="text-lg font-semibold text-tpb-dark mb-2">Month Payback</h3>
@@ -45,7 +45,7 @@ export default function IntroPage() {
           </div>
           
           <div className="text-center p-6 bg-white rounded-lg shadow-sm">
-            <div className="w-16 h-16 bg-tpb-blue rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-20 h-20 bg-tpb-blue rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl font-bold text-white">300%+</span>
             </div>
             <h3 className="text-lg font-semibold text-tpb-dark mb-2">Year-1 ROI</h3>
@@ -54,7 +54,10 @@ export default function IntroPage() {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-white rounded-lg shadow-sm p-8 text-center">
+        <div 
+          onClick={handleStartCalculator}
+          className="bg-white rounded-lg shadow-sm p-8 text-center cursor-pointer hover:shadow-md transition-shadow duration-200"
+        >
           <h2 className="text-2xl font-bold text-tpb-dark mb-4">
             Run the ROI Calculator
           </h2>
@@ -63,19 +66,8 @@ export default function IntroPage() {
             payback window based on your numbers. Model your store today and see if you are leaving money on the floor.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={handleStartCalculator}
-              className="btn btn-primary text-lg px-8 py-4"
-            >
-              Start ROI Calculator
-            </button>
-            <button
-              onClick={() => router.push('/roi-tool')}
-              className="btn btn-secondary text-lg px-8 py-4"
-            >
-              View All Features
-            </button>
+          <div className="btn btn-primary text-lg px-8 py-4 inline-block">
+            Start ROI Calculator →
           </div>
         </div>
 

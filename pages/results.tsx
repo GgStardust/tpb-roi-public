@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useROICalculations } from '../hooks/useROICalculations';
 import ROIResults from '../components/ROIResults';
@@ -10,6 +10,8 @@ import { generateROISnapshot } from '../utils/roiCalculations';
 export default function ResultsPage() {
   const router = useRouter();
   const { inputs, result, updateInput, packages } = useROICalculations();
+  const [showDetails, setShowDetails] = useState(false);
+  const [showMultiLocation, setShowMultiLocation] = useState(false);
 
   // Handle PNG export
   const handlePNGExport = () => {
@@ -78,40 +80,113 @@ export default function ResultsPage() {
           </p>
         </div>
 
-        {/* Main Results */}
-        <div id="roi-results" className="mb-12">
-          <ROIResults
-            result={result}
-            revenue={inputs.revenue}
-            upliftPct={inputs.upliftPct}
-            marginPct={inputs.marginPct}
-            inputs={inputs}
-            showExport={true}
-            canExportPNG={true}
-            canExportSnapshot={true}
-            onSnapshotExport={handleSnapshotExport}
-            onPNGExport={handlePNGExport}
-            className="mb-8"
-          />
+        {/* Key Metrics Dashboard */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {/* Payback Period - Most Important */}
+          <div className="bg-white rounded-lg shadow-sm p-6 text-center border-l-4 border-tpb-green">
+            <div className="text-3xl font-bold text-tpb-green mb-2">
+              {result.paybackMonths?.toFixed(1) || "N/A"}
+            </div>
+            <div className="text-sm text-gray-600 mb-1">Months to Payback</div>
+            <div className="text-xs text-gray-500">Your investment pays for itself</div>
+          </div>
+
+          {/* Monthly Net Increase */}
+          <div className="bg-white rounded-lg shadow-sm p-6 text-center border-l-4 border-tpb-blue">
+            <div className="text-3xl font-bold text-tpb-blue mb-2">
+              ${result.monthlyNet.toLocaleString()}
+            </div>
+            <div className="text-sm text-gray-600 mb-1">Monthly Net Increase</div>
+            <div className="text-xs text-gray-500">After all fees and costs</div>
+          </div>
+
+          {/* Year-1 ROI */}
+          <div className="bg-white rounded-lg shadow-sm p-6 text-center border-l-4 border-tpb-orange">
+            <div className="text-3xl font-bold text-tpb-orange mb-2">
+              {result.year1Roi ? `${(result.year1Roi * 100).toFixed(0)}%` : "N/A"}
+            </div>
+            <div className="text-sm text-gray-600 mb-1">Year-1 ROI</div>
+            <div className="text-xs text-gray-500">Return on investment</div>
+          </div>
+
+          {/* 3-Year Total */}
+          <div className="bg-white rounded-lg shadow-sm p-6 text-center border-l-4 border-tpb-slate">
+            <div className="text-3xl font-bold text-tpb-slate mb-2">
+              ${result.cumulative3Year.toLocaleString()}
+            </div>
+            <div className="text-sm text-gray-600 mb-1">3-Year Total</div>
+            <div className="text-xs text-gray-500">Cumulative profit</div>
+          </div>
         </div>
 
-        {/* Visualization */}
+        {/* Detailed Results - Collapsible */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-tpb-dark mb-6 text-center">
-            Annual Profit Projection
-          </h2>
-          <ROIVisualization
-            result={result}
-            campaignTitle="Your Store Analysis"
-          />
+          <div className="bg-white rounded-lg shadow-sm">
+            <button
+              onClick={() => setShowDetails(!showDetails)}
+              className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50"
+            >
+              <h2 className="text-xl font-bold text-tpb-dark">
+                Detailed Analysis
+              </h2>
+              <span className="text-tpb-green">
+                {showDetails ? "Hide Details" : "Show Details"}
+              </span>
+            </button>
+            
+            {showDetails && (
+              <div className="px-6 pb-6 border-t">
+                <div id="roi-results">
+                  <ROIResults
+                    result={result}
+                    revenue={inputs.revenue}
+                    upliftPct={inputs.upliftPct}
+                    marginPct={inputs.marginPct}
+                    inputs={inputs}
+                    showExport={true}
+                    canExportPNG={true}
+                    canExportSnapshot={true}
+                    onSnapshotExport={handleSnapshotExport}
+                    onPNGExport={handlePNGExport}
+                    className="mb-8"
+                  />
+                </div>
+                
+                <div className="mt-8">
+                  <h3 className="text-lg font-semibold text-tpb-dark mb-4">
+                    Annual Profit Projection
+                  </h3>
+                  <ROIVisualization
+                    result={result}
+                    campaignTitle="Your Store Analysis"
+                  />
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
-        {/* Multi-Location Calculator */}
+        {/* Multi-Location Calculator - Collapsible */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-tpb-dark mb-6 text-center">
-            Multi-Location Analysis
-          </h2>
-          <MultiLocationROI />
+          <div className="bg-white rounded-lg shadow-sm">
+            <button
+              onClick={() => setShowMultiLocation(!showMultiLocation)}
+              className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50"
+            >
+              <h2 className="text-xl font-bold text-tpb-dark">
+                Multi-Location Analysis
+              </h2>
+              <span className="text-tpb-green">
+                {showMultiLocation ? "Hide Multi-Location" : "Show Multi-Location"}
+              </span>
+            </button>
+            
+            {showMultiLocation && (
+              <div className="px-6 pb-6 border-t">
+                <MultiLocationROI />
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Action Buttons */}

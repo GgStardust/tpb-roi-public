@@ -63,6 +63,19 @@ export default function CalculatorPage() {
               mode="calculator"
             />
 
+            {/* Package Descriptions */}
+            <div className="bg-gray-50 rounded-lg p-4">
+              <h3 className="font-semibold text-tpb-dark mb-3">Package Details:</h3>
+              <div className="space-y-2 text-sm text-gray-600">
+                {packages.map((pkg) => (
+                  <div key={pkg.key} className="flex justify-between">
+                    <span className="font-medium">{pkg.key}:</span>
+                    <span>{pkg.includes}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
               <h3 className="font-semibold text-tpb-dark mb-2">💡 Pro Tip</h3>
               <p className="text-sm text-gray-600">
@@ -105,7 +118,13 @@ export default function CalculatorPage() {
 
               <div className="mt-6 pt-4 border-t">
                 <button
-                  onClick={handleCalculate}
+                  onClick={() => router.push(`/results?${new URLSearchParams({
+                    pkg: inputs.pkgKey,
+                    revenue: inputs.revenue.toString(),
+                    uplift: inputs.upliftPct.toString(),
+                    margin: inputs.marginPct.toString(),
+                    extraCapex: inputs.extraCapex.toString()
+                  })}`)}
                   className="w-full btn btn-primary text-lg py-3"
                 >
                   Calculate My ROI
@@ -115,58 +134,22 @@ export default function CalculatorPage() {
 
             <div className="bg-gray-100 rounded-lg p-4">
               <h3 className="font-semibold text-tpb-dark mb-2">What Happens Next?</h3>
-              <ul className="text-sm text-gray-600 space-y-1">
+              <ul className="text-sm text-gray-600 space-y-1 mb-4">
                 <li>• Detailed ROI calculations and projections</li>
                 <li>• Payback period analysis</li>
                 <li>• Multi-year profit projections</li>
                 <li>• Downloadable reports for stakeholders</li>
               </ul>
+              <button
+                onClick={handleViewAllFeatures}
+                className="text-sm text-tpb-green hover:text-tpb-dark underline"
+              >
+                Compare All Packages →
+              </button>
             </div>
           </div>
         </div>
 
-        {/* Results Section - Only show when calculated */}
-        {showResults && (
-          <div className="mt-12">
-            <div className="bg-white rounded-lg shadow-sm p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-tpb-dark">
-                  Your ROI Results
-                </h2>
-                <div className="text-sm text-gray-500">
-                  Step 2 of 2: Review Your Results
-                </div>
-              </div>
-              
-              <div className="text-center py-8">
-                <p className="text-lg text-gray-600 mb-4">
-                  Your detailed ROI analysis is ready! Click below to view comprehensive results, 
-                  charts, and downloadable reports.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button
-                    onClick={() => router.push(`/results?${new URLSearchParams({
-                      pkg: inputs.pkgKey,
-                      revenue: inputs.revenue.toString(),
-                      uplift: inputs.upliftPct.toString(),
-                      margin: inputs.marginPct.toString(),
-                      extraCapex: inputs.extraCapex.toString()
-                    })}`)}
-                    className="btn btn-primary text-lg px-8 py-3"
-                  >
-                    View Detailed Results
-                  </button>
-                  <button
-                    onClick={handleViewAllFeatures}
-                    className="btn btn-secondary text-lg px-8 py-3"
-                  >
-                    Compare All Packages
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
