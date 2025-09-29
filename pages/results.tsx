@@ -80,6 +80,14 @@ export default function ResultsPage() {
           </p>
         </div>
 
+        {/* Narrative Summary */}
+        <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+          <h2 className="text-xl font-bold text-tpb-dark mb-4">Your ROI analysis</h2>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            At {inputs.upliftPct}% uplift, your {inputs.pkgKey} investment pays for itself in {result.paybackMonths?.toFixed(1) || "N/A"} months and generates ${result.monthlyNet.toLocaleString()} in net profit each month. Cumulative profit over 3 years is ${result.cumulative3Year.toLocaleString()}.
+          </p>
+        </div>
+
         {/* Key Metrics Dashboard */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {/* Payback Period - Most Important */}
@@ -161,6 +169,16 @@ export default function ResultsPage() {
                     campaignTitle="Your Store Analysis"
                   />
                 </div>
+
+                {/* Context Bullets */}
+                <div className="mt-8 bg-gray-50 rounded-lg p-4">
+                  <h4 className="font-semibold text-tpb-dark mb-3">Key Insights:</h4>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li>• Monthly net increase of ${result.monthlyNet.toLocaleString()} can cover one or more staff salaries.</li>
+                    <li>• Year-3 ROI of {result.cumulative3YearRoi ? `${(result.cumulative3YearRoi * 100).toFixed(0)}%` : "N/A"} reflects continued monthly returns after payback.</li>
+                    <li>• Uplift is driven by product discovery, guided education, and faster decision flow.</li>
+                  </ul>
+                </div>
               </div>
             )}
           </div>
@@ -195,8 +213,7 @@ export default function ResultsPage() {
             Ready to Move Forward?
           </h2>
           <p className="text-lg text-gray-600 mb-6">
-            Your ROI analysis shows strong potential. Schedule a demo to discuss 
-            implementation and see how interactive kiosks can transform your store.
+            Book a personalized demo to see how The Peak Beyond can transform your retail space.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -206,13 +223,23 @@ export default function ResultsPage() {
               rel="noopener noreferrer"
               className="btn btn-primary text-lg px-8 py-3"
             >
-              Schedule Demo
+              Schedule a demo
             </a>
             <button
-              onClick={handleStartOver}
+              onClick={handlePNGExport}
               className="btn btn-secondary text-lg px-8 py-3"
             >
-              Calculate Another Scenario
+              Download ROI report (PNG)
+            </button>
+            <button
+              onClick={() => {
+                const shareText = `ROI Analysis: ${inputs.pkgKey} package pays for itself in ${result.paybackMonths?.toFixed(1) || "N/A"} months, generating $${result.monthlyNet.toLocaleString()} monthly net profit. Calculate your own: ${window.location.origin}/calculator`;
+                navigator.clipboard.writeText(shareText);
+                alert("Results copied to clipboard!");
+              }}
+              className="btn btn-secondary text-lg px-8 py-3"
+            >
+              Share results
             </button>
           </div>
         </div>
