@@ -103,6 +103,7 @@ export default function CalculatorPage() {
                 ))}
               </div>
             </div>
+
           </div>
 
           {/* Input Section - Upper Right */}
@@ -114,69 +115,8 @@ export default function CalculatorPage() {
               mode="calculator"
             />
 
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-              <h3 className="font-semibold text-tpb-dark mb-2">💡 Industry Insight</h3>
-              <p className="text-sm text-gray-600 mb-3">
-                The 12% uplift benchmark is based on published research in retail kiosks and on consumer user behavior data collected in store. In general retail, interactive kiosks often drive 10% to 15% gains in basket size or conversion. In cannabis, in-store media and kiosks have produced lifts up to 25% to 30% on featured items because the store is a primary engagement channel. Our analysis of observed sessions and baskets supports 12% as a practical average. Stores can expect conservative outcomes in the 5% to 8% range and optimistic outcomes in the 15% to 20%+ range depending on execution.
-              </p>
-              <button
-                onClick={() => setShowLearnMore(true)}
-                className="text-sm text-tpb-green hover:text-tpb-dark underline"
-              >
-                Learn More
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Section - Quick Preview */}
-        <div className="space-y-6">
-          <div>
-            <h2 className="text-2xl font-bold text-tpb-dark mb-2">
-              Quick Preview
-            </h2>
-            <p className="text-gray-600">
-              See a snapshot of your potential ROI before running the full calculation.
-            </p>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <div className="space-y-4">
-              <div className="flex justify-between">
-                <span className="text-gray-600">Selected Package:</span>
-                <span className="font-semibold">{inputs.pkgKey}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Monthly Revenue:</span>
-                <span className="font-semibold">${inputs.revenue.toLocaleString()}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Projected Uplift:</span>
-                <span className="font-semibold text-tpb-green">{inputs.upliftPct}%</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Gross Margin:</span>
-                <span className="font-semibold">{inputs.marginPct}%</span>
-              </div>
-              
-              {/* Calculated Values */}
-              <div className="border-t pt-4 space-y-2">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Incremental monthly gross profit:</span>
-                  <span className="font-semibold text-tpb-green">
-                    ${((inputs.revenue * inputs.upliftPct / 100) * inputs.marginPct / 100).toLocaleString()}
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Estimated payback period:</span>
-                  <span className="font-semibold text-tpb-orange">
-                    {result.paybackMonths?.toFixed(1) || "N/A"} months
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6 pt-4 border-t">
+            {/* Calculate Button - Right Column */}
+            <div className="text-center">
               <button
                 onClick={() => router.push(`/results?${new URLSearchParams({
                   pkg: inputs.pkgKey,
@@ -185,22 +125,26 @@ export default function CalculatorPage() {
                   margin: inputs.marginPct.toString(),
                   extraCapex: inputs.extraCapex.toString()
                 })}`)}
-                className="w-full btn btn-primary text-lg py-3"
+                className="btn btn-primary text-xl px-12 py-5 w-full"
               >
                 Calculate My ROI
               </button>
             </div>
           </div>
+        </div>
 
-          <div className="bg-gray-100 rounded-lg p-4">
-            <h3 className="font-semibold text-tpb-dark mb-2">What Happens Next?</h3>
-            <ul className="text-sm text-gray-600 space-y-1 mb-4">
-              <li>• Detailed ROI calculations and projections</li>
-              <li>• Payback period analysis</li>
-              <li>• Multi-year profit projections</li>
-              <li>• Downloadable reports for stakeholders</li>
-            </ul>
-          </div>
+        {/* Industry Insight - Full Width Bottom */}
+        <div className="mt-8 bg-green-50 border border-green-200 rounded-lg p-6">
+          <h3 className="font-semibold text-tpb-dark mb-3">💡 Industry Insight</h3>
+          <p className="text-sm text-gray-600 mb-3">
+            The 12% uplift benchmark is based on published research in retail kiosks and on consumer user behavior data collected in store. In general retail, interactive kiosks often drive 10% to 15% gains in basket size or conversion. In cannabis, in-store media and kiosks have produced lifts up to 25% to 30% on featured items because the store is a primary engagement channel. Our analysis of observed sessions and baskets supports 12% as a practical average. Stores can expect conservative outcomes in the 5% to 8% range and optimistic outcomes in the 15% to 20%+ range depending on execution.
+          </p>
+          <button
+            onClick={() => setShowLearnMore(true)}
+            className="text-sm text-tpb-green hover:text-tpb-dark underline"
+          >
+            Learn More
+          </button>
         </div>
 
       </div>

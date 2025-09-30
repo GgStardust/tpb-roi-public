@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useROICalculations } from '../hooks/useROICalculations';
 import TPBHeader from '../components/TPBHeader';
@@ -9,6 +9,21 @@ import html2canvas from 'html2canvas';
 export default function ResultsPage() {
   const router = useRouter();
   const { inputs, result, updateInput, packages } = useROICalculations();
+
+  // Handle URL parameters to override default values
+  useEffect(() => {
+    if (router.isReady && router.query) {
+      const { pkg, revenue, uplift, margin, extraCapex } = router.query;
+      
+      if (pkg || revenue || uplift || margin || extraCapex) {
+        updateInput('pkgKey', pkg as string || inputs.pkgKey);
+        updateInput('revenue', revenue ? Number(revenue) : inputs.revenue);
+        updateInput('upliftPct', uplift ? Number(uplift) : inputs.upliftPct);
+        updateInput('marginPct', margin ? Number(margin) : inputs.marginPct);
+        updateInput('extraCapex', extraCapex ? Number(extraCapex) : inputs.extraCapex);
+      }
+    }
+  }, [router.isReady, router.query, updateInput, inputs.pkgKey, inputs.revenue, inputs.upliftPct, inputs.marginPct, inputs.extraCapex]);
   const [showMultiLocation, setShowMultiLocation] = useState(false);
 
   // Handle PNG export
