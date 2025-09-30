@@ -164,39 +164,18 @@ export default function ResultsPage() {
         {/* Package Contents */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
           <h3 className="text-lg font-semibold text-tpb-dark mb-4">Package Contents</h3>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <h4 className="font-medium text-tpb-dark mb-3">What's Included in Your {result.pkg} Package:</h4>
-              <div className="space-y-2">
-                {(() => {
-                  const selectedPackage = packages.find(p => p.key === result.pkg);
-                  return selectedPackage ? selectedPackage.includes.split(', ').map((item, index) => (
-                    <div key={index} className="flex items-start">
-                      <div className="w-2 h-2 bg-tpb-green rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-700">{item.trim()}</span>
-                    </div>
-                  )) : "Package details not available";
-                })()}
-              </div>
-            </div>
-            <div>
-              <h4 className="font-medium text-tpb-dark mb-3">Investment Breakdown:</h4>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Upfront Investment:</span>
-                  <span className="font-semibold">${result.capex.toLocaleString()}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Monthly Service Fee:</span>
-                  <span className="font-semibold">${result.monthlyFees.toLocaleString()}</span>
-                </div>
-                <div className="flex justify-between border-t pt-2">
-                  <span className="text-gray-600">Total Year 1 Cost:</span>
-                  <span className="font-semibold text-tpb-dark">
-                    ${(result.capex + (result.monthlyFees * 12)).toLocaleString()}
-                  </span>
-                </div>
-              </div>
+          <div>
+            <h4 className="font-medium text-tpb-dark mb-3">What's Included in Your {result.pkg} Package:</h4>
+            <div className="space-y-2">
+              {(() => {
+                const selectedPackage = packages.find(p => p.key === result.pkg);
+                return selectedPackage ? selectedPackage.includes.split(', ').map((item, index) => (
+                  <div key={index} className="flex items-start">
+                    <div className="w-2 h-2 bg-tpb-green rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <span className="text-gray-700">{item.trim()}</span>
+                  </div>
+                )) : "Package details not available";
+              })()}
             </div>
           </div>
         </div>
@@ -287,39 +266,18 @@ export default function ResultsPage() {
             {/* Package Contents - PNG Export */}
             <div className="bg-gray-50 p-6 rounded-xl mb-8">
               <h3 className="text-lg font-semibold text-tpb-dark mb-4">Package Contents</h3>
-              <div className="grid grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-medium text-tpb-dark mb-3">What's Included in Your {result.pkg} Package:</h4>
-                  <div className="space-y-2">
-                    {(() => {
-                      const selectedPackage = packages.find(p => p.key === result.pkg);
-                      return selectedPackage ? selectedPackage.includes.split(', ').map((item, index) => (
-                        <div key={index} className="flex items-start">
-                          <div className="w-2 h-2 bg-tpb-green rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                          <span className="text-gray-700 text-sm">{item.trim()}</span>
-                        </div>
-                      )) : "Package details not available";
-                    })()}
-                  </div>
-                </div>
-                <div>
-                  <h4 className="font-medium text-tpb-dark mb-3">Investment Breakdown:</h4>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Upfront Investment:</span>
-                      <span className="font-semibold">${result.capex.toLocaleString()}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Monthly Service Fee:</span>
-                      <span className="font-semibold">${result.monthlyFees.toLocaleString()}</span>
-                    </div>
-                    <div className="flex justify-between border-t pt-2">
-                      <span className="text-gray-600">Total Year 1 Cost:</span>
-                      <span className="font-semibold text-tpb-dark">
-                        ${(result.capex + (result.monthlyFees * 12)).toLocaleString()}
-                      </span>
-                    </div>
-                  </div>
+              <div>
+                <h4 className="font-medium text-tpb-dark mb-3">What's Included in Your {result.pkg} Package:</h4>
+                <div className="space-y-2">
+                  {(() => {
+                    const selectedPackage = packages.find(p => p.key === result.pkg);
+                    return selectedPackage ? selectedPackage.includes.split(', ').map((item, index) => (
+                      <div key={index} className="flex items-start">
+                        <div className="w-2 h-2 bg-tpb-green rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span className="text-gray-700 text-sm">{item.trim()}</span>
+                      </div>
+                    )) : "Package details not available";
+                  })()}
                 </div>
               </div>
             </div>
