@@ -114,7 +114,16 @@ export default function ResultsPage() {
         </div>
 
         {/* Key Metrics Dashboard */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
+          {/* Package Investment */}
+          <div className="bg-white rounded-lg shadow-sm p-6 text-center border-l-4 border-blue-500">
+            <div className="text-2xl font-bold text-blue-600 mb-2">
+              ${result.capex.toLocaleString()}
+            </div>
+            <div className="text-sm text-gray-600 mb-1">{result.pkg} Package</div>
+            <div className="text-xs text-gray-500">+ ${result.monthlyFees}/mo</div>
+          </div>
+
           {/* Payback Period - Most Important */}
           <div className="bg-white rounded-lg shadow-sm p-6 text-center border-l-4 border-tpb-green">
             <div className="text-3xl font-bold text-tpb-green mb-2">
@@ -161,8 +170,23 @@ export default function ResultsPage() {
               <p className="text-lg text-gray-600">The Peak Beyond | {new Date().toLocaleDateString()}</p>
             </div>
 
-            {/* Key Metrics Dashboard - 2x2 Grid */}
+            {/* Key Metrics Dashboard - 2x3 Grid */}
             <div className="grid grid-cols-2 gap-6 mb-8">
+              {/* Package Investment */}
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border-l-4 border-blue-500">
+                <div className="flex items-center mb-3">
+                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+                    <span className="text-white font-bold text-sm flex items-center justify-center">P</span>
+                  </div>
+                  <h3 className="font-semibold text-tpb-dark">Package Investment</h3>
+                </div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">
+                  ${result.capex.toLocaleString()}
+                </div>
+                <div className="text-sm text-gray-600">{result.pkg} Package</div>
+                <div className="text-xs text-gray-500">+ ${result.monthlyFees}/mo</div>
+              </div>
+
               {/* Payback Period */}
               <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl border-l-4 border-tpb-green">
                 <div className="flex items-center mb-3">
