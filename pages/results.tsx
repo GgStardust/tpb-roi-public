@@ -466,28 +466,14 @@ export default function ResultsPage() {
           </div>
         </div>
 
-        {/* Navigation Buttons */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={handleBackToCalculator}
-              className="btn btn-secondary text-lg px-8 py-3"
-            >
-              ← Back to Calculator
-            </button>
-            <button
-              onClick={() => router.push('/calculator')}
-              className="btn btn-secondary text-lg px-8 py-3"
-            >
-              Try Another Package
-            </button>
-            <button
-              onClick={() => router.push('/intro')}
-              className="btn btn-secondary text-lg px-8 py-3"
-            >
-              Start Over
-            </button>
-          </div>
+        {/* Start Over Button */}
+        <div className="bg-white rounded-lg shadow-sm p-6 mb-6 text-center">
+          <button
+            onClick={() => router.push('/intro')}
+            className="btn btn-secondary text-lg px-8 py-3"
+          >
+            Start Over
+          </button>
         </div>
 
         {/* Action Buttons */}
