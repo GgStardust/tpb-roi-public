@@ -469,8 +469,12 @@ export default function ResultsPage() {
         {/* Start Over Button */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6 text-center">
           <button
-            onClick={() => router.push('/calculator')}
+            onClick={() => {
+              console.log('Start Over button clicked');
+              window.location.href = '/calculator';
+            }}
             className="btn btn-secondary text-lg px-8 py-3"
+            type="button"
           >
             Start Over
           </button>
